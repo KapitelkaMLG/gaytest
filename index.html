@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Gay Test</title>
+    <meta charset="utf-8">
+    <script type="text/javascript">
+      function swapButtons() {
+        var yesButton = document.getElementsByClassName("yes_button")[0];
+        var yesButtonVars = getButtonVars(yesButton);
+        var noButton = document.getElementsByClassName("no_button")[0];
+        var noButtonVars = getButtonVars(noButton);
+
+        setButtonVars(yesButton, noButtonVars);
+        setButtonVars(noButton, yesButtonVars);
+	advanceQuestionNumber();
+      }
+
+      function getButtonVars(button) {
+        return [button.innerHTML, button.className, button.onclick];
+      }
+
+      function setButtonVars(button, buttonVars) {
+        button.innerHTML = buttonVars[0];
+        button.className = buttonVars[1];
+        button.onclick = buttonVars[2];
+      }
+
+      var questionCounter = 1;
+
+      function advanceQuestionNumber() {
+        questionNumber = document.getElementsByTagName("h2")[0];
+        questionCounter++;
+        questionNumber.innerHTML = "Question " + questionCounter + ":";
+      }
+
+      function confirmGay() {
+        document.title = "You are gay!";
+	var body = document.getElementsByTagName("body")[0];
+	body.innerHTML = `
+	        <div>
+			<h1>Gay Test</h1>
+			<h2>You test results:</h2>
+			<p>You are gay! Congratulations!</p>
+		</div>
+		<img src="https://i.pinimg.com/originals/2e/5e/9e/2e5e9e64a02cb8df8eaca89e4a85311d.gif">
+	      `;
+      }
+    </script>
+    <style>
+    body {
+      background-color: #666666;
+      text-align: center;
+      color: #DDDDDD;
+      font-size: 32px;
+    }
+
+    div {
+      background-color: #222222;
+      padding: 50px 50px;
+    }
+
+    button {
+      border: none;
+      padding: 20px 20px;
+      text-align: center;
+    }
+
+    button.yes_button {
+      background-color: #33AA33;
+    }
+
+    button.no_button {
+      background-color: #AA3333;
+    }
+
+    div {
+      
+    }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h1>Gay Test</h1>
+      <h2>Question 1:</h2>
+      <p>Are you gay?</p>
+      <button class="yes_button" onclick="confirmGay();">Yes</button>
+      <button class="no_button" onclick="swapButtons();">No</button>
+    </div>
+  </body>
+</html>
+
